@@ -27,12 +27,20 @@ const MovieList = ({ movies, currentPage, onPageChange }) => {
             ) : (
               <p>No Poster Available</p>
             )}
-            <div className="movie-details">
+            <div className="movie-detail">
+              <div className='movie-details'>
               <h2>{movie.Title || 'Title not available'}</h2>
               <h3>{movie.Year || 'Year not available'}</h3>
-            </div>
+              </div>
+             <div className='movie-details'>
+             <p>Rating: {movie.imdbID}</p>
+            <p>Type: {movie.Type}</p>
+             </div>
 
-			<button className='details_btn' onClick={() => handleModal(movie.imdbID)}>View Details</button>
+            </div>
+            
+
+            <button className='details_btn' onClick={() => handleModal(movie.imdbID)}>View Details</button>
           </div>
         ))}
       </div>
@@ -41,7 +49,7 @@ const MovieList = ({ movies, currentPage, onPageChange }) => {
           Prev
         </button>
         <span>{currentPage}</span>
-        <button disabled={movies.length<10} onClick={() => handlePageChange(currentPage + 1)}>Next</button>
+        <button disabled={movies.length < 10} onClick={() => handlePageChange(currentPage + 1)}>Next</button>
       </div>
       <Details isOpen={isModalOpen} onClose={() => setModalOpen(false)} movie={selectedMovie} />
     </>
