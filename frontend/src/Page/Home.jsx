@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Search from '../components/Search'
 import MovieCard from '../components/MovieCard'
+import Gif from '../GIF/down.gif'
+import Dog from '../GIF/dog.gif'
 
 
 const Home = () => {
@@ -18,7 +20,7 @@ const Home = () => {
     setIsLoading(true);
     setError(null);
 
-    let apiUrl = `http://localhost:8000/api/search?query=${query}&page=${page}`;
+    let apiUrl = `https://omdbi.onrender.com/api/search?query=${query}&page=${page}`;
 
     axios
       .get(apiUrl)
@@ -47,9 +49,13 @@ const Home = () => {
         }}
       />
       {isLoading ? (
-        <div>Loading...</div>
+        <div>
+          <img src={Gif} alt="" />
+        </div>
       ) : error ? (
-        <div>Error: {error}</div>
+        <div>
+          <img src={Dog} alt="" />
+        </div>
       ) : (
         <>
           <MovieCard
